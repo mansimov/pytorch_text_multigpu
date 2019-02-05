@@ -3,6 +3,32 @@ import json
 
 import six
 
+class EditExample(object):
+    """Defines a single training or test example for edit based model.
+
+    Stores each column of the example as an attribute.
+    """
+    @classmethod
+    def fromlist(cls, data, fields):
+        ex = cls()
+        for (name, field), val in zip(fields, data):
+            if field is not None:
+                if isinstance(val, six.string_types):
+                    val = val.rstrip('\n')
+                setattr(ex, name, field.preprocess(val))
+        return ex
+    """
+    @classmethod
+    def fromlist(cls, data, fields):
+        ex = cls()
+        for (name, field), val in zip(fields[:-1], data[:-1]):
+            if field is not None:
+                if isinstance(val, six.string_types):
+                    val = val.rstrip('\n')
+                setattr(ex, name, field.preprocess(val))
+        setattr(ex, fields[-1][0], data[-1])
+        return ex
+    """
 
 class Example(object):
     """Defines a single training or test example.

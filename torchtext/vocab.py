@@ -16,7 +16,6 @@ from .utils import reporthook
 
 logger = logging.getLogger(__name__)
 
-
 class Vocab(object):
     """Defines a vocabulary object that will be used to numericalize a field.
 

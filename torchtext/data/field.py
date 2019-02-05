@@ -290,6 +290,7 @@ class Field(RawField):
             if self.postprocessing is not None:
                 arr = self.postprocessing(arr, self.vocab, train)
         else:
+            #import pdb; pdb.set_trace()
             if self.tensor_type not in self.tensor_types:
                 raise ValueError(
                     "Specified Field tensor_type {} can not be used with "
@@ -304,7 +305,7 @@ class Field(RawField):
                 arr = [numericalization_func(x) for x in arr]
             if self.postprocessing is not None:
                 arr = self.postprocessing(arr, None, train)
-
+            #import pdb; pdb.set_trace()
         arr = self.tensor_type(arr)
         if self.sequential and not self.batch_first:
             arr.t_()

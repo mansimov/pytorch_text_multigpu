@@ -9,7 +9,7 @@ from .utils import get_tokenizer, interleave_keys
 
 __all__ = ["Batch",
            "Dataset", "TabularDataset", "ZipDataset",
-           "Example",
+           "Example", "EditExample"
            "RawField", "Field", "ReversibleField", "SubwordField",
            "batch", "BucketIterator", "Iterator", "BPTTIterator",
            "pool",
